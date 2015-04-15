@@ -1,8 +1,15 @@
+// package metadata file for Meteor.js
+'use strict';
+
+var packageName = 'bergie:hallo';  // http://atmospherejs.com/bergie/hallo
+
+var packageJson = JSON.parse(Npm.require("fs").readFileSync('package.json'));
+
 Package.describe({
-  name: 'arillo:hallo',
+  name: packageName,
   summary: "Hallo (official): Rich text editor for contentEditable (jQuery UI)",
-  version: "1.1.1",
-  git: "https://github.com/arillo/hallo.git"
+  version: packageJson.version,
+  git: "https://github.com/bergie/hallo.git"
 });
 
 Package.onUse(function(api) {

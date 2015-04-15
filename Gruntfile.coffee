@@ -15,7 +15,9 @@ module.exports = ->
           interactive: false
           forceLatest: false
           directory: 'bower_components'
-
+    exec:
+      'meteor-publish':
+        command: 'meteor/publish.sh'
     # CoffeeScript complication
     coffee:
       core:
@@ -117,6 +119,7 @@ module.exports = ->
   @loadNpmTasks 'grunt-contrib-concat'
   @loadNpmTasks 'grunt-contrib-clean'
   @loadNpmTasks 'grunt-contrib-uglify'
+  @loadNpmTasks 'grunt-exec'
 
   # Testing dependencies
   @loadNpmTasks 'grunt-coffeelint'
@@ -131,3 +134,6 @@ module.exports = ->
   @registerTask 'build', ['bower-install-simple', 'coffee', 'concat', 'clean', 'uglify']
   @registerTask 'test', ['coffeelint', 'build', 'qunit']
   @registerTask 'crossbrowser', ['test', 'connect', 'saucelabs-qunit']
+
+  # Meteor tasks
+  @registerTask 'meteor-publish', 'exec:meteor-publish'
